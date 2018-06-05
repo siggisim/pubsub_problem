@@ -1,6 +1,7 @@
 package main
 
 import (
+	//"context"
 	"context"
 	"flag"
 	"fmt"
@@ -11,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 
-	gc "cloud.google.com/go/pubsub"
+	//gc "cloud.google.com/go/pubsub"
 
 	pb "api/service"
 )
@@ -25,18 +26,19 @@ var (
 )
 
 type serviceServer struct {
-	client *gc.Client
+	//client *gc.Client
 }
 
 func NewServiceServer() *serviceServer {
-	ctx := context.Background()
+	// ctx := context.Background()
+	//
+	// client, err := gc.NewClient(ctx, "test")
+	// if err != nil {
+	// 	return nil
+	// }
 
-	client, err := gc.NewClient(ctx, "test")
-	if err != nil {
-		return nil
-	}
-
-	return &serviceServer{client}
+	//return &serviceServer{client}
+	return &serviceServer{}
 }
 
 func (s *serviceServer) TestRPC(ctx context.Context, registerRequest *pb.TestRPCRequest) (*pb.TestRPCReply, error) {
