@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_grpc_library")
+
+proto_library(
+    name = "proto",
+    srcs = ["service.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@googleapis_archive//:api_proto",
+    ],
+)
+
+go_grpc_library(
+    name = "go_proto",
+    importpath = "api/service",
+    proto = ":proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@googleapis_archive//:api_go_proto",
+    ],
+)
+
+go_library(
+    name = "go_default_library",
+    embed = [":go_proto"],
+    importpath = "api/service",
+    visibility = ["//visibility:public"],
+)

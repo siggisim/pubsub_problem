@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package api.service;
+
+import "google/api/annotations.proto";
+
+service Service {
+
+  rpc TestRPC(TestRPCRequest) returns (TestRPCReply) {
+    option (google.api.http) = {
+      post: "/v1/service/test"
+      body: "*"
+    };
+  }
+}
+
+message TestRPCRequest {
+  string id = 1;
+}
+
+message TestRPCReply {
+  string result = 1;
+}
