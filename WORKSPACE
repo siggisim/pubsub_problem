@@ -11,16 +11,22 @@ http_archive(
     strip_prefix = "rules_go-1903997d0945ce92848447528718c7026b728f30",
     sha256 = "c4d602a4b5204bae8e7c5cf3f916845b2cef539741d020b1e1bba09d843259b2",
 )
+
 http_archive(
-  name = "bazel_gazelle",
-  url = "https://github.com/bazelbuild/bazel-gazelle/archive/644ec7202aa352b78d65bc66abc2c0616d76cc84.tar.gz",  # May 31, 2018
-  strip_prefix = "bazel-gazelle-644ec7202aa352b78d65bc66abc2c0616d76cc84",
-  sha256 = "ef1722f82aed4d312779e9357391b8715a0933a880d84031dde649ecac605274",
+    name = "bazel_gazelle",
+    url = "https://github.com/bazelbuild/bazel-gazelle/archive/644ec7202aa352b78d65bc66abc2c0616d76cc84.tar.gz",  # May 31, 2018
+    strip_prefix = "bazel-gazelle-644ec7202aa352b78d65bc66abc2c0616d76cc84",
+    sha256 = "ef1722f82aed4d312779e9357391b8715a0933a880d84031dde649ecac605274",
 )
+
 load("@io_bazel_rules_go//go:def.bzl", "go_rules_dependencies", "go_register_toolchains")
+
 go_rules_dependencies()
+
 go_register_toolchains()
+
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+
 gazelle_dependencies()
 
 go_repository(
@@ -31,20 +37,20 @@ go_repository(
 
 go_repository(
     name = "org_golang_google_api",
-    importpath = "google.golang.org/api",
     commit = "00e3bb8d04691e25ee2fccf98c866bcb7925c3ec",  # June 5, 2018
+    importpath = "google.golang.org/api",
 )
 
 go_repository(
     name = "org_golang_x_sync",
-    importpath = "golang.org/x/sync",
     commit = "1d60e4601c6fd243af51cc01ddf169918a5407ca",  # March 14, 2018
+    importpath = "golang.org/x/sync",
 )
 
 go_repository(
     name = "org_golang_x_oauth2",
-    importpath = "golang.org/x/oauth2",
     commit = "cdc340f7c179dbbfa4afd43b7614e8fcadde4269",  # May 2, 2018
+    importpath = "golang.org/x/oauth2",
 )
 
 go_repository(
